@@ -9,11 +9,8 @@ import io.jmix.petclinic.entity.pet.Pet;
 import io.jmix.petclinic.entity.visit.Visit;
 import io.jmix.petclinic.entity.visit.VisitTreatmentStatus;
 import io.jmix.petclinic.entity.visit.VisitType;
-import io.jmix.petclinic.security.DatabaseUserRepository;
-import io.jmix.security.role.assignment.RoleAssignmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -34,23 +31,19 @@ public class VisitTestDataCreation {
     protected final TimeSource timeSource;
     protected final DataManager dataManager;
     protected final RandomVisitDateTime randomVisitDateTime;
-    @Autowired
-    private DatabaseUserRepository databaseUserRepository;
-    @Autowired
-    private RoleAssignmentRepository roleAssignmentRepository;
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public VisitTestDataCreation(
             PetclinicTestdataProperties petclinicTestdataProperties,
             TimeSource timeSource,
             DataManager dataManager,
-            RandomVisitDateTime randomVisitDateTime
-    ) {
+            RandomVisitDateTime randomVisitDateTime,
+            EmployeeRepository employeeRepository) {
         this.petclinicTestdataProperties = petclinicTestdataProperties;
         this.timeSource = timeSource;
         this.dataManager = dataManager;
         this.randomVisitDateTime = randomVisitDateTime;
+        this.employeeRepository = employeeRepository;
     }
 
     public void createData() {

@@ -147,8 +147,9 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
 
     @Subscribe("refreshMyVisits")
     protected void onRefreshMyVisitsTimerAction(Timer.TimerActionEvent event) {
+
         sideMenu.getMenuItem("myVisits")
-                .setBadgeText(amountOfVisits() + " Visits");
+                .setBadgeText(messageBundle.formatMessage("myVisitMenuItemBadge", amountOfVisits()));
     }
 
     @Subscribe("switchThemeMode")
