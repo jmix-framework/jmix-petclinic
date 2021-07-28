@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://ownerEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="ownerDc"
+                  class="io.jmix.petclinic.entity.owner.Owner">
+            <fetchPlan extends="_base">
+                <property name="pets" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="petsDc" property="pets"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="contentTabSheet">
+        <label stylename="h2" id="titleLabel"/>
+        <tabSheet id="contentTabSheet">
+            <tab id="details" caption="msg://details" spacing="true" margin="true">
+                <form id="form" dataContainer="ownerDc">
+                    <column width="350px">
+                        <textField id="firstNameField" property="firstName"/>
+                        <textField id="lastNameField" property="lastName"/>
+                        <textField id="addressField" property="address"/>
+                        <textField id="cityField" property="city"/>
+                        <textField id="emailField" property="email"/>
+                        <maskedField id="telephoneField"
+                                     property="telephone"
+                                     mask="(####) ###-##-##"
+                                     valueMode="clear"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="petsTab"
+                 caption="msg://io.jmix.petclinic.entity.owner/Owner.pets"
+                 spacing="true"
+                 margin="true"
+                 expand="petsTable"
+            >
+                <table id="petsTable" dataContainer="petsDc" width="100%">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="identificationNumber"/>
+                        <column id="birthdate"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="petsTable.create"/>
+                        <button action="petsTable.edit"/>
+                        <button action="petsTable.remove" stylename="danger"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+            <button id="enableEditingBtn" action="enableEditing"/>
+        </hbox>
+    </layout>
+</window>

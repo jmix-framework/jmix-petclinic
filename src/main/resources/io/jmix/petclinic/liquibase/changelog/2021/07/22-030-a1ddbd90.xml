@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="petclinic">
+        <createTable tableName="PETCLINIC_PET_TYPE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINIC_PET_TYPE"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="COLOR" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="petclinic">
+        <createTable tableName="PETCLINIC_SPECIALTY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINIC_SPECIALTY"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="petclinic">
+        <createTable tableName="PETCLINIC_VETERINARIAN">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINIC_VETERINARIAN"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="FIRST_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="petclinic">
+        <createTable tableName="PETCLINIC_VET_SPECIALTY_LINK">
+            <column name="SPECIALTY_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINICVETSPECIALTYLINK"/>
+            </column>
+            <column name="VETERINARIAN_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINICVETSPECIALTYLINK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="petclinic">
+        <createTable tableName="PETCLINIC_VISIT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PETCLINIC_VISIT"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="TYPE_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ASSIGNED_NURSE_ID" type="UUID"/>
+            <column name="PET_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VISIT_START" type="DATETIME"/>
+            <column name="VISIT_END" type="DATETIME"/>
+            <column name="DESCRIPTION" type="VARCHAR(4000)"/>
+            <column name="TREATMENT_STATUS" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="petclinic">
+        <addColumn tableName="PETCLINIC_PET">
+            <column name="BIRTH_DATE" type="DATE"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="OWNER_ID" type="UUID"/>
+            <column name="TYPE_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="7" author="petclinic">
+        <addColumn tableName="PETCLINIC_PET">
+            <column name="IDENTIFICATION_NUMBER" type="VARCHAR(255)"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="IDENTIFICATION_NUMBER" defaultNullValue="''" tableName="PETCLINIC_PET"/>
+    </changeSet>
+    <changeSet id="8" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="ASSIGNED_NURSE_ID" baseTableName="PETCLINIC_VISIT"
+                                 constraintName="FK_PETCLINICVI_ON_ASSIGNEDNUR" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_USER"/>
+    </changeSet>
+    <changeSet id="9" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="OWNER_ID" baseTableName="PETCLINIC_PET"
+                                 constraintName="FK_PETCLINIC_PET_ON_OWNER" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_OWNER"/>
+    </changeSet>
+    <changeSet id="10" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="TYPE_ID" baseTableName="PETCLINIC_PET"
+                                 constraintName="FK_PETCLINIC_PET_ON_TYPE" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_PET_TYPE"/>
+    </changeSet>
+    <changeSet id="11" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="PET_ID" baseTableName="PETCLINIC_VISIT"
+                                 constraintName="FK_PETCLINIC_VISIT_ON_PET" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_PET"/>
+    </changeSet>
+    <changeSet id="12" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="SPECIALTY_ID" baseTableName="PETCLINIC_VET_SPECIALTY_LINK"
+                                 constraintName="FK_PETVETSPE_ON_SPECIALTY" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_SPECIALTY"/>
+    </changeSet>
+    <changeSet id="13" author="petclinic">
+        <addForeignKeyConstraint baseColumnNames="VETERINARIAN_ID" baseTableName="PETCLINIC_VET_SPECIALTY_LINK"
+                                 constraintName="FK_PETVETSPE_ON_VETERINARIAN" referencedColumnNames="ID"
+                                 referencedTableName="PETCLINIC_VETERINARIAN"/>
+    </changeSet>
+</databaseChangeLog>

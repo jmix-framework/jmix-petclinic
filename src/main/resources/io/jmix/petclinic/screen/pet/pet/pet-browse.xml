@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://petBrowse.caption"
+        focusComponent="petsTable">
+    <data readOnly="true">
+            <collection id="petTypesDc"
+                    class="io.jmix.petclinic.entity.pet.PetType"
+                    fetchPlan="_base">
+            <loader id="petTypesDl">
+                <query>
+                    <![CDATA[select e from petclinic_PetType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="ownersDc"
+                    class="io.jmix.petclinic.entity.owner.Owner"
+                    fetchPlan="_base">
+            <loader id="ownersDl">
+                <query>
+                    <![CDATA[select e from petclinic_Owner e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="petsDc"
+                    class="io.jmix.petclinic.entity.pet.Pet">
+            <fetchPlan extends="_base">
+                <property name="type" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="petsDl">
+                <query>
+                    <![CDATA[select e from petclinic_Pet e]]>
+                                        <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>e.type = :component_typeFilterField</c:where>
+                            </c:jpql>
+                            <c:jpql>
+                                <c:where>e.identificationNumber = :component_idFilterField</c:where>
+                            </c:jpql>
+                            <c:jpql>
+                                <c:where>e.owner = :component_ownerFilterField</c:where>
+                            </c:jpql>
+                            <c:jpql>
+                                <c:where>
+                                    <![CDATA[EXTRACT(YEAR FROM e.birthdate) > :component_birthdateFilterField]]>
+                                </c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="petsTable" spacing="true">
+    <tabSheet id="filterTabSheet">
+                <tab id="defaultFilterTab" caption="msg://defaultFilter" margin="true" spacing="true">
+                    <hbox spacing="true">
+                        <textField
+                                width="150px"
+                                id="idFilterField"
+                                caption="msg://io.jmix.petclinic.entity.pet/Pet.identificationNumber"
+                        />
+                        <entityComboBox
+                                id="typeFilterField"
+                                optionsContainer="petTypesDc"
+                                caption="msg://io.jmix.petclinic.entity.pet/Pet.type"
+                                nullOptionVisible="true"
+                        />
+                        <entityComboBox
+                                id="ownerFilterField"
+                                optionsContainer="ownersDc"
+                                caption="msg://io.jmix.petclinic.entity.pet/Pet.owner"
+                                nullOptionVisible="true"
+                        />
+                        <slider
+                                id="birthdateFilterField"
+                                orientation="horizontal"
+                                min="1995"
+                                max="2000"
+                                caption="msg://birthdateAfter"
+                                updateValueOnClick="true"
+
+                        />
+                        <button align="BOTTOM_CENTER"
+                                id="clearFilterBtn"
+                                action="petsTable.clearFilter"
+                        />
+                    </hbox>
+                </tab>
+                <tab id="extendedFilter" caption="msg://extendedFilter" margin="true" spacing="true">
+                    <filter id="filter"
+                            width="100%"
+                            collapsable="false"
+                            collapsed="false"
+                            applyTo="petsTable"
+                            dataLoader="petsDl">
+                        <properties include=".*"/>
+                    </filter>
+                </tab>
+            </tabSheet>
+        <groupTable id="petsTable"
+                    width="100%"
+                    dataContainer="petsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="clearFilter"
+                        caption="msg://clearFilter"
+                        icon="ERASER"/>
+                <action id="excelExport" type="excelExport"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="identificationNumber"/>
+                <column id="birthdate"/>
+                <column id="type"/>
+                <column id="owner"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="petsTable.create"/>
+                <button id="editBtn" action="petsTable.edit"/>
+                <button id="removeBtn" action="petsTable.remove" stylename="danger"/>
+                <button id="excelExportBtn" action="petsTable.excelExport" />
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

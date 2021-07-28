@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://ownerBrowse.caption"
+        focusComponent="ownersTable">
+    <data readOnly="true">
+        <collection id="ownersDc"
+                    class="io.jmix.petclinic.entity.owner.Owner">
+            <fetchPlan extends="_base"/>
+            <loader id="ownersDl">
+                <query>
+                    <![CDATA[select e from petclinic_Owner e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ownersTable" spacing="true">
+        <filter id="filter"
+                dataLoader="ownersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ownersTable"
+                    multiselect="true"
+                    width="100%"
+                    dataContainer="ownersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="view" type="view" />
+                <action id="remove" type="remove"/>
+                <action id="excelExport" type="excelExport"/>
+            </actions>
+            <columns>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="address"/>
+                <column id="city"/>
+                <column id="email"/>
+                <column id="telephone"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="ownersTable.create"/>
+                <button id="viewBtn" action="ownersTable.view"/>
+                <button id="removeBtn" action="ownersTable.remove"  stylename="danger"/>
+                <button id="excelExportBtn" action="ownersTable.excelExport" />
+                <relatedEntities for="ownersTable">
+                    <property name="pets" />
+                </relatedEntities>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

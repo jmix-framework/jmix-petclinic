@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://visitEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="visitDc"
+                  class="io.jmix.petclinic.entity.visit.Visit">
+            <fetchPlan extends="_base">
+                <property name="assignedNurse" fetchPlan="_instance_name"/>
+                <property name="pet" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+
+        <collection id="petsDc" class="io.jmix.petclinic.entity.pet.Pet" fetchPlan="_instance_name">
+            <loader>
+                <query><![CDATA[select e from petclinic_Pet e]]></query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="editActions">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="visitDc">
+                <column width="250px">
+                    <dateField id="visitStartField" property="visitStart"/>
+                    <entityComboBox
+                            id="petField"
+                            optionsContainer="petsDc"
+                            property="pet"
+                    >
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityComboBox>
+                    <comboBox id="typeField" property="type"/>
+                    <textArea rows="5" property="description" colspan="2" width="100%"/>
+                </column>
+                <column width="250px">
+                    <dateField id="visitEndField" property="visitEnd"/>
+                    <entityComboBox
+                            id="assignedNurseField"
+                            property="assignedNurse"
+                    />
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

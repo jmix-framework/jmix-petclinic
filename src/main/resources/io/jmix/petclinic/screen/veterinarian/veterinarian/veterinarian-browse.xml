@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://veterinarianBrowse.caption"
+        focusComponent="veterinariansTable">
+    <data readOnly="true">
+        <collection id="veterinariansDc"
+                    class="io.jmix.petclinic.entity.veterinarian.Veterinarian">
+            <fetchPlan extends="_base"/>
+            <loader id="veterinariansDl">
+                <query>
+                    <![CDATA[select e from petclinic_Veterinarian e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="veterinariansTable" spacing="true">
+        <filter id="filter"
+                dataLoader="veterinariansDl">
+            <properties include=".*"/>
+        </filter>
+        <dataGrid id="veterinariansTable"
+                  width="100%"
+                  dataContainer="veterinariansDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column property="firstName" id="firstName"/>
+                <column property="lastName" id="lastName"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="veterinariansTable.create"/>
+                <button id="editBtn" action="veterinariansTable.edit"/>
+                <button id="removeBtn" action="veterinariansTable.remove" stylename="danger"/>
+            </buttonsPanel>
+        </dataGrid>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

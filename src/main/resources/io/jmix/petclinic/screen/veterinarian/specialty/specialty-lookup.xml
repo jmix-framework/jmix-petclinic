@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://specialtyLookup.caption"
+        focusComponent="specialtiesTable">
+    <data readOnly="true">
+        <collection id="specialtiesDc"
+                    class="io.jmix.petclinic.entity.veterinarian.Specialty">
+            <fetchPlan extends="_base"/>
+            <loader id="specialtiesDl">
+                <query>
+                    <![CDATA[select e from petclinic_Specialty e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="specialtiesTable" spacing="true">
+        <table id="specialtiesTable"
+               width="100%"
+               dataContainer="specialtiesDc"
+               multiselect="true">
+            <actions>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

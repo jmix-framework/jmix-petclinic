@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application-petclinic" caption="msg://io.jmix.petclinic/menu.application-petclinic" insertBefore="administration">
+        <item screen="petclinic_Visit.browse" caption="msg://io.jmix.petclinic.screen.visit/visitBrowse.menu"/>
+        <item screen="petclinic_Pet.browse" caption="msg://io.jmix.petclinic.screen.pet.pet/petBrowse.menu"/>
+        <item screen="petclinic_Owner.browse" caption="msg://io.jmix.petclinic.screen.owner/ownerBrowse.menu"/>
+    </menu>
+    <menu id="application-masterdata" caption="msg://io.jmix.petclinic/menu.application-masterdata" insertBefore="administration">
+        <item screen="petclinic_Veterinarian.browse"
+              caption="msg://io.jmix.petclinic.screen.veterinarian.veterinarian/veterinarianBrowse.menu"/>
+        <item screen="petclinic_Specialty.browse"
+              caption="msg://io.jmix.petclinic.screen.veterinarian.specialty/specialtyBrowse.caption"/>
+        <item screen="petclinic_PetType.browse"
+              caption="msg://io.jmix.petclinic.screen.pet.pettype/petTypeBrowse.caption"/>
+        <item screen="petclinic_User.browse" caption="msg://io.jmix.petclinic.screen.user/UserBrowse.caption"/>
+    </menu>
+
+    <item screen="themeSettingsScreen"  insertBefore="administration" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+</menu-config>

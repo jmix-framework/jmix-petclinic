@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://petEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="petDc"
+                  class="io.jmix.petclinic.entity.pet.Pet">
+            <fetchPlan extends="_base">
+                <property name="type" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+
+        <collection id="ownersDc" class="io.jmix.petclinic.entity.owner.Owner" fetchPlan="_base">
+            <loader>
+                <query>
+                <![CDATA[select e from petclinic_Owner e]]>
+
+                </query>
+            </loader>
+        </collection>
+
+        <collection id="typesDc" class="io.jmix.petclinic.entity.pet.PetType" fetchPlan="_base">
+            <loader>
+                <query>
+                <![CDATA[select e from petclinic_PetType e order by e.name]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode
+            width="AUTO"
+            height="AUTO"
+            forceDialog="true" />
+    <layout spacing="true" expand="editActions">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="petDc">
+                <column width="250px">
+                    <textField id="nameField" property="name" colspan="2" width="100%"/>
+                    <entityComboBox id="typeField"
+                                    dataContainer="petDc"
+                                    optionsContainer="typesDc"
+                                    property="type">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="clear" type="entity_clear"/>
+                        </actions>
+                    </entityComboBox>
+                    <entityComboBox id="ownerField"
+                                    dataContainer="petDc"
+                                    optionsContainer="ownersDc"
+                                    property="owner">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="clear" type="entity_clear"/>
+                        </actions>
+                    </entityComboBox>
+                </column>
+                            <column width="250px">
+                    <textField id="identificationNumberField" property="identificationNumber"/>
+                    <dateField id="birthdateField" property="birthdate"/>
+            </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

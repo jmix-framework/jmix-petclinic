@@ -1,0 +1,99 @@
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://myVisits.caption"
+        focusComponent="table">
+    <data>
+        <collection id="visitsDc"
+                    class="io.jmix.petclinic.entity.visit.Visit">
+            <fetchPlan extends="_base"/>
+            <loader id="visitsDl">
+                <query>
+                    <![CDATA[select e from petclinic_Visit e where e.assignedNurse = :currentUser and e.treatmentStatus <> @enum(io.jmix.petclinic.entity.visit.VisitTreatmentStatus.DONE)]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="visitDc"
+                  class="io.jmix.petclinic.entity.visit.Visit">
+            <fetchPlan extends="_base">
+                <property name="pet" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="save" icon="OK" caption="msg:///actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="CANCEL" caption="msg:///actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="650" width="800" resizable="true"/>
+    <layout spacing="true">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <table id="table"
+                       width="100%"
+                       contextMenuEnabled="false"
+                       columnControlVisible="false"
+                       reorderingAllowed="false"
+                       dataContainer="visitsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="start"
+                          trackSelection="true"
+                          icon="PLAY_CIRCLE_O"
+                          caption="msg://start"
+                        />
+                        <action id="finish"
+                          trackSelection="true"
+                          icon="CHECK_CIRCLE_O"
+                          caption="msg://finish"
+                        />
+                    </actions>
+                    <columns>
+                        <column id="visitStart" sort="ASCENDING"/>
+                        <column id="type"/>
+                        <column id="treatmentStatus"/>
+                    </columns>
+                    <simplePagination itemsPerPageDefaultValue="5"/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="startBtn"
+                          action="table.start"
+                          primary="true"
+                        />
+                        <button id="finishBtn"
+                          action="table.finish"
+                          stylename="secondary"
+                        />
+                    </buttonsPanel>
+                </table>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <form id="form" dataContainer="visitDc"  editable="false">
+                        <column width="250px">
+                            <dateField id="visitStartField" property="visitStart"/>
+                            <comboBox id="typeField" property="type"/>
+                            <textArea rows="5" id="descriptionField" property="description" colspan="2" width="100%"/>
+                        </column>
+                        <column width="250px">
+                            <dateField id="visitEndField" property="visitEnd"/>
+                            <entityPicker id="petField" property="pet">
+                                <actions>
+                                    <action id="entityOpen" type="entity_open"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </scrollBox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                </hbox>
+            </vbox>
+    </layout>
+</window>

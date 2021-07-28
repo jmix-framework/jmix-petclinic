@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://veterinarianEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="veterinarianDc"
+                  class="io.jmix.petclinic.entity.veterinarian.Veterinarian">
+            <fetchPlan extends="_base">
+                <property name="specialties" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="specialtiesDc" property="specialties"/>
+        </instance>
+        <collection id="allSpecialtiesDc"
+                    class="io.jmix.petclinic.entity.veterinarian.Specialty">
+            <fetchPlan extends="_base"/>
+            <loader id="allSpecialtiesDl">
+                <query>
+                    <![CDATA[select e from petclinic_Specialty e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose"
+                caption="msg:///actions.SaveClose"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowCommit"
+                caption="msg:///actions.Save"
+                icon="SAVE"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox">
+                    <form id="form" dataContainer="veterinarianDc">
+                        <column width="350px">
+                            <textField id="firstNameField" property="firstName"/>
+                            <textField id="lastNameField" property="lastName"/>
+                            <tagPicker id="tagPicker"
+                                       dataContainer="veterinarianDc"
+                                       property="specialties"
+                                       optionsContainer="allSpecialtiesDc"/>
+                        </column>
+                    </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitBtn" action="windowCommit"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
