@@ -58,7 +58,7 @@
                           alwaysVisible="true">
                 <button id="createBtn" action="ownersTable.create"/>
                 <button id="viewBtn" action="ownersTable.view"/>
-                <button id="removeBtn" action="ownersTable.remove"  stylename="danger"/>
+                <button id="removeBtn" action="ownersTable.remove" stylename="danger"/>
                 <button id="excelExportBtn" action="ownersTable.excelExport" />
                 <relatedEntities for="ownersTable">
                     <property name="pets" />

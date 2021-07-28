@@ -59,7 +59,7 @@
                           alwaysVisible="true">
                 <button id="createBtn" action="usersTable.create"/>
                 <button id="editBtn" action="usersTable.edit"/>
-                <button id="removeBtn" action="usersTable.remove"/>
+                <button id="removeBtn" action="usersTable.remove" stylename="danger"/>
                 <button id="showRoleAssignmentsBtn" action="usersTable.showRoleAssignments"/>
                 <popupButton id="additionalActionsBtn" caption="msg://additional" icon="GEARS">
                     <actions>
