@@ -1,7 +1,7 @@
 # Jmix Petclinic
 
 <p align="center">
-  <img src="https://github.com/Haulmont/jmix-petclinic/blob/master/img/petclinic_logo_with_slogan.svg"/>
+  <img src="https://raw.githubusercontent.com/Haulmont/jmix-petclinic/main/img/petclinic_logo_with_slogan.svg"/>
 </p>
 
 
