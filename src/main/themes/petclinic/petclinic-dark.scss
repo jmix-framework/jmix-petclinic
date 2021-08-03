@@ -17,6 +17,7 @@
   --button-error-disabled-text-color: var(--secondary-contrast-text-color);
 
 
+
   --button-secondary-color: var(--secondary-color);
   --button-secondary-text-color: var(--secondary-contrast-text-color);
   --button-secondary-hover-color: var(--secondary-color-shade-1);
@@ -28,6 +29,16 @@
 
   --slider-handle-border-color: var(--border-color);
 
+  --drawer-background-color: var(--secondary-contrast-text-color);
+  --drawer-text-color: var(--sidemenu-text-color);
+  --drawer-sidemenu-submenu-background-color: var(--secondary-contrast-text-color);
+
+  --sidemenu-title-color: var(--sidemenu-text-color);
+  --sidemenu-title-background-color: var(--dark-purple);
+  --sidemenu-item-selected-color: var(--dark-purple);
+  --sidemenu-item-focused-color: var(--dark-purple);
+
+  --sidemenu-collapsible-controls-panel-background-color: var(--dark-purple);
 
   --groupbox-collapsed-caption-color: var(--secondary-contrast-text-color);
 
