@@ -88,13 +88,14 @@
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Side menu
   //////////////////////////////////////////////////////////////////////////////////////////////////
-  .jmix-sidemenu-panel:not(.collapsed) {
+  .jmix-drawer:not(.collapsed) {
     @include side-menu-layout();
   }
 
-  .jmix-sidemenu-panel.collapsed:hover {
+  .jmix-drawer.collapsed:hover {
     @include side-menu-layout();
   }
+
 
   // make visit-type selection color icons round
   .v-select-optiongroup-visit-type .v-icon {
