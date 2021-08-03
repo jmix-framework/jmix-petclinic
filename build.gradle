@@ -48,6 +48,7 @@ dependencies {
     implementation "io.jmix.datatools:jmix-datatools-ui-starter"
     implementation "io.jmix.translations:jmix-translations-de"
     implementation "io.jmix.translations:jmix-translations-zh-cn"
+    implementation "io.jmix.translations:jmix-translations-ru"
 
     testImplementation 'org.assertj:assertj-core:3.11.1'
     testImplementation 'org.mockito:mockito-core:3.2.4'
