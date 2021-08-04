@@ -14,7 +14,7 @@ You can find the Jmix Petclinic as an online hosted example here: [Jmix Petclini
 
 ## Application Overview
 
-<a href="https://youtu.be/2DKske7EId8"><img src="https://raw.githubusercontent.com/Haulmont/jmix-petclinic/master/img/login-screen.png"/></a>
+<a href="https://youtu.be/CmGfrt-vLwM"><img src="https://raw.githubusercontent.com/Haulmont/jmix-petclinic/master/img/login-screen.png"/></a>
 
 ### Functionalities
 
