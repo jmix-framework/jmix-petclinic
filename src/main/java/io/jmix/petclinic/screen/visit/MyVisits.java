@@ -10,6 +10,7 @@ import io.jmix.ui.action.list.EditAction;
 import io.jmix.ui.component.Table;
 import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.InstanceContainer;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.LookupComponent;
 import io.jmix.ui.screen.MasterDetailScreen;
 import io.jmix.ui.screen.MessageBundle;
@@ -23,6 +24,7 @@ import javax.inject.Named;
 @UiController("petclinic_MyVisits")
 @UiDescriptor("my-visits.xml")
 @LookupComponent("table")
+@Route(value = "my-visits")
 public class MyVisits extends MasterDetailScreen<Visit> {
 
 

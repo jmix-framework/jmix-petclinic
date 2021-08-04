@@ -43,7 +43,8 @@ Jmix Petclinic consists mainly of the following functionalities:
 
 #### Owners & Pets
 ![Petclinic Pets](img/screenshots/petclinic-pets.png)
-![Petclinic Pet Detail](img/screenshots/petclinic-pet-detail.png)
+![Petclinic Owner Detail](img/screenshots/petclinic-owner-details.png)
+![Petclinic Owner Detail Pets](img/screenshots/petclinic-owner-details-pets.png)
 ![Petclinic Owners](img/screenshots/petclinic-owners.png)
 
 

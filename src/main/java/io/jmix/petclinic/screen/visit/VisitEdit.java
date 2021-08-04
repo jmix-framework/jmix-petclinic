@@ -5,6 +5,7 @@ import io.jmix.petclinic.app.EmployeeRepository;
 import io.jmix.petclinic.entity.User;
 import io.jmix.petclinic.entity.visit.Visit;
 import io.jmix.ui.component.EntityComboBox;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.EditedEntityContainer;
 import io.jmix.ui.screen.MessageBundle;
 import io.jmix.ui.screen.StandardEditor;
@@ -19,6 +20,7 @@ import java.util.List;
 @UiController("petclinic_Visit.edit")
 @UiDescriptor("visit-edit.xml")
 @EditedEntityContainer("visitDc")
+@Route(value = "visits/edit", parentPrefix = "visits")
 public class VisitEdit extends StandardEditor<Visit> {
 
     @Autowired

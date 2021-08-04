@@ -24,6 +24,7 @@ import io.jmix.ui.component.RadioButtonGroup;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.DataContext;
+import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.LookupComponent;
 import io.jmix.ui.screen.MessageBundle;
 import io.jmix.ui.screen.OpenMode;
@@ -49,6 +50,7 @@ import static io.jmix.petclinic.screen.visit.calendar.RelativeDates.startOfWeek;
 @UiController("petclinic_Visit.browse")
 @UiDescriptor("visit-browse.xml")
 @LookupComponent("visitsTable")
+@Route(value = "visits")
 public class VisitBrowse extends StandardLookup<Visit> {
 
 

@@ -1,10 +1,16 @@
 package io.jmix.petclinic.screen.pet.pettype;
 
+import io.jmix.petclinic.entity.pet.PetType;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.ColorPicker;
 import io.jmix.ui.component.Component;
-import io.jmix.ui.screen.*;
-import io.jmix.petclinic.entity.pet.PetType;
+import io.jmix.ui.navigation.Route;
+import io.jmix.ui.screen.Install;
+import io.jmix.ui.screen.LookupComponent;
+import io.jmix.ui.screen.MasterDetailScreen;
+import io.jmix.ui.screen.Subscribe;
+import io.jmix.ui.screen.UiController;
+import io.jmix.ui.screen.UiDescriptor;
 
 import javax.inject.Inject;
 
@@ -13,6 +19,7 @@ import static io.jmix.petclinic.screen.pet.pettype.ColorGeneration.randomColor;
 @UiController("petclinic_PetType.browse")
 @UiDescriptor("pet-type-browse.xml")
 @LookupComponent("table")
+@Route(value = "pettypes")
 public class PetTypeBrowse extends MasterDetailScreen<PetType> {
 
     @Inject

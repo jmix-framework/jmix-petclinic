@@ -30,6 +30,7 @@
 .jmix-brandlogin-welcome-label.v-label-jmix-brandlogin-welcome-label.v-label {
   font-size: 25px;
   font-weight: 600;
+  color: var(--dark-purple);
 }
 
 .v-slot-inline-icon.v-slot-jmix-brandlogin-textfield > .v-caption-on-top > .v-caption-inline-icon.v-caption-jmix-brandlogin-textfield > span.v-icon {
