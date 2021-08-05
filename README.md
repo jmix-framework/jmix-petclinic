@@ -9,7 +9,7 @@ The Jmix Petclinic application deals with the domain of a Pet clinic and the ass
 
 ## Online Demo
 
-You can find the Jmix Petclinic as an online hosted example here: [Jmix Petclinic Online Demo](https://demo4.Jmix-platform.com/petclinic)
+The Jmix Petclinic online demo will soon be available...
 
 
 ## Application Overview
