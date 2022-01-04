@@ -7,7 +7,6 @@ import io.jmix.petclinic.app.EmployeeRepository;
 import io.jmix.petclinic.entity.User;
 import io.jmix.petclinic.entity.pet.Pet;
 import io.jmix.petclinic.entity.visit.Visit;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,6 +22,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
+import static java.util.List.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -79,26 +80,21 @@ class VisitTestDataCreationVisitListTest {
         daysInFutureToGenerateFor(0);
         visitAmountPerDay(10);
 
-        possibleDescriptions(List.of("Fever", "Disease"));
+        possibleDescriptions(of("Fever", "Disease"));
 
         possiblePets(
                 data.pet("Pikachu"),
                 data.pet("Garchomp")
         );
 
-        possibleNurses(asList(data.nurse("Joy")));
+        possibleNurses(of(data.nurse("Joy")));
 
         // when:
         List<Visit> visits = visitTestDataCreation.createVisits();
 
-        LocalDateTime tomorrow = LocalDateTime.now().plusDays(1).toLocalDate().atStartOfDay();;
         // then:
-        Assertions.assertThat(
-                visits.stream()
-                        .map(Visit::getVisitStart)
-                        .collect(Collectors.toList())
-        )
-                .allMatch(localDateTime -> localDateTime.isBefore(tomorrow));
+        assertThat(futureVisits(visits))
+                .isEmpty();
     }
 
     @Test
@@ -109,43 +105,29 @@ class VisitTestDataCreationVisitListTest {
         daysInFutureToGenerateFor(30);
         visitAmountPerDay(10);
 
-        possibleDescriptions(List.of("Fever", "Disease"));
+        possibleDescriptions(of("Fever", "Disease"));
 
         possiblePets(
                 data.pet("Pikachu"),
                 data.pet("Garchomp")
         );
 
-        possibleNurses(asList(data.nurse("Joy")));
+        possibleNurses(of(data.nurse("Joy")));
 
         // when:
         List<Visit> visits = visitTestDataCreation.createVisits();
 
         // then: the more far into the future, the less amount of visits are generated
-        Assertions.assertThat(amountOfVisitsForDate(visits, TOMORROW))
+        assertThat(amountOfVisitsForDate(visits, TOMORROW))
                 .isLessThan(10);
-        Assertions.assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(7)))
+        assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(7)))
                 .isLessThan(8);
-        Assertions.assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(14)))
+        assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(14)))
                 .isLessThan(6);
-        Assertions.assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(21)))
+        assertThat(amountOfVisitsForDate(visits, TOMORROW.plusDays(21)))
                 .isLessThan(4);
     }
 
-    private int amountOfVisitsForDate(List<Visit> visits, LocalDate date) {
-        return futureVisits(visits)
-                .stream()
-                .collect(Collectors.groupingBy(visit -> visit.getVisitStart().toLocalDate()))
-                .get(date)
-                .size();
-    }
-
-    private List<Visit> futureVisits(List<Visit> visits) {
-
-        return visits.stream()
-                .filter(visit -> visit.getVisitStart().isAfter(TOMORROW_MORNING))
-                .collect(Collectors.toList());
-    }
 
     @Test
     void given_10VisitsPerDays_when_generateVisits_then_sizeIs10() {
@@ -155,20 +137,20 @@ class VisitTestDataCreationVisitListTest {
         daysInFutureToGenerateFor(0);
         visitAmountPerDay(10);
 
-        possibleDescriptions(List.of("Fever", "Disease"));
+        possibleDescriptions(of("Fever", "Disease"));
 
         possiblePets(
                 data.pet("Pikachu"),
                 data.pet("Garchomp")
         );
 
-        possibleNurses(asList(data.nurse("Joy")));
+        possibleNurses(of(data.nurse("Joy")));
 
         // when:
         List<Visit> visits = visitTestDataCreation.createVisits();
 
         // then:
-        Assertions.assertThat(visits.size())
+        assertThat(visits.size())
                 .isEqualTo(10);
     }
 
@@ -186,12 +168,23 @@ class VisitTestDataCreationVisitListTest {
                 .thenReturn(asList(pets));
     }
 
+    private int amountOfVisitsForDate(List<Visit> visits, LocalDate date) {
+        return futureVisits(visits)
+                .stream()
+                .collect(Collectors.groupingBy(visit -> visit.getVisitStart().toLocalDate()))
+                .get(date)
+                .size();
+    }
+
+    private List<Visit> futureVisits(List<Visit> visits) {
+        return visits.stream()
+                .filter(visit -> visit.getVisitStart().isAfter(TOMORROW_MORNING))
+                .collect(Collectors.toList());
+    }
 
     private void possibleNurses(List<User> nurses) {
-
-        when(
-                employeeRepository.findAllNurses()
-        ).thenReturn(nurses);
+        when(employeeRepository.findAllNurses())
+                .thenReturn(nurses);
     }
 
     private void daysInPastToGenerateFor(int days) {

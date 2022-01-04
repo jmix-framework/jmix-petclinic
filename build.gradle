@@ -1,13 +1,12 @@
-
 plugins {
-    id 'io.jmix' version '1.0.0'
+    id 'io.jmix' version '1.1.4'
     id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.0.0' 
+    bomVersion = '1.1.2'
     projectId = 'petclinic'
 }
 
@@ -17,10 +16,10 @@ sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
-    mavenCentral() 
+    mavenCentral()
     maven {
         url 'https://global.repo.jmix.io/repository/public'
-    } 
+    }
 }
 
 dependencies {

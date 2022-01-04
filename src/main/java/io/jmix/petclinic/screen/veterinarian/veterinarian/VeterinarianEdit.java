@@ -9,7 +9,6 @@ import io.jmix.ui.screen.StandardEditor;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.inject.Inject;
@@ -30,7 +29,6 @@ public class VeterinarianEdit extends StandardEditor<Veterinarian> {
         getWindow().setCaption(editorTitleLabel());
     }
 
-    @NotNull
     private String editorTitleLabel() {
         if (entityStates.isNew(getEditedEntity())) {
             return messageBundle.getMessage("newCaption");
