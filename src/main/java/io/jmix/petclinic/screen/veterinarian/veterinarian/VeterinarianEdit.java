@@ -11,15 +11,13 @@ import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
-
 @UiController("petclinic_Veterinarian.edit")
 @UiDescriptor("veterinarian-edit.xml")
 @EditedEntityContainer("veterinarianDc")
 @Route(value = "veterinarians/edit", parentPrefix = "veterinarians")
 public class VeterinarianEdit extends StandardEditor<Veterinarian> {
 
-    @Inject
+    @Autowired
     protected MessageBundle messageBundle;
     @Autowired
     private EntityStates entityStates;

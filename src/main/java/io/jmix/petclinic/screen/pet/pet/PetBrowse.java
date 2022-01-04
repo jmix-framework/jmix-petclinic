@@ -13,8 +13,8 @@ import io.jmix.ui.screen.StandardLookup;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
 
 @UiController("petclinic_Pet.browse")
 @UiDescriptor("pet-browse.xml")
@@ -22,16 +22,16 @@ import javax.inject.Inject;
 @Route(value = "pets")
 public class PetBrowse extends StandardLookup<Pet> {
 
-    @Inject
+    @Autowired
     protected Slider birthdateFilterField;
 
-    @Inject
+    @Autowired
     protected TextField<String> idFilterField;
 
-    @Inject
+    @Autowired
     protected EntityComboBox<Owner> ownerFilterField;
 
-    @Inject
+    @Autowired
     protected EntityComboBox<PetType> typeFilterField;
 
 

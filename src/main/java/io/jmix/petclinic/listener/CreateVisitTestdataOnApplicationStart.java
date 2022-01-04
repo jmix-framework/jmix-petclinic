@@ -2,19 +2,16 @@ package io.jmix.petclinic.listener;
 
 import io.jmix.core.security.Authenticated;
 import io.jmix.petclinic.app.visit.VisitTestDataCreation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-
 @Component("petclinic_CreateVisitTestdataOnApplicationStart")
 public class CreateVisitTestdataOnApplicationStart {
 
-
-    @Inject
+    @Autowired
     protected VisitTestDataCreation visitTestDataCreation;
-
 
     @Authenticated
     @EventListener

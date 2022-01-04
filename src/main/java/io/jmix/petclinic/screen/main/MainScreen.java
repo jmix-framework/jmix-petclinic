@@ -26,7 +26,6 @@ import io.jmix.ui.screen.UiDescriptor;
 import io.jmix.ui.theme.ThemeVariantsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
 import java.util.stream.Stream;
 
 @UiController("petclinic_MainScreen")
@@ -36,13 +35,26 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
 
     @Autowired
     private ScreenTools screenTools;
-
     @Autowired
     private AppWorkArea workArea;
     @Autowired
     private Drawer drawer;
     @Autowired
     private Button collapseDrawerButton;
+    @Autowired
+    protected SideMenu sideMenu;
+    @Autowired
+    protected DataManager dataManager;
+    @Autowired
+    protected CurrentAuthentication currentAuthentication;
+    @Autowired
+    protected ScreenBuilders screenBuilders;
+    @Autowired
+    protected ThemeVariantsManager heliumThemeVariantsManager;
+    @Autowired
+    protected Button switchThemeModeBtn;
+    @Autowired
+    protected MessageBundle messageBundle;
 
     @Override
     public AppWorkArea getWorkArea() {
@@ -66,22 +78,6 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
 
         screenTools.handleRedirect();
     }
-
-
-    @Inject
-    protected SideMenu sideMenu;
-    @Inject
-    protected DataManager dataManager;
-    @Inject
-    protected CurrentAuthentication currentAuthentication;
-    @Inject
-    protected ScreenBuilders screenBuilders;
-    @Inject
-    protected ThemeVariantsManager heliumThemeVariantsManager;
-    @Inject
-    protected Button switchThemeModeBtn;
-    @Inject
-    protected MessageBundle messageBundle;
 
     @Subscribe
     protected void initMainMenu(AfterShowEvent event) {

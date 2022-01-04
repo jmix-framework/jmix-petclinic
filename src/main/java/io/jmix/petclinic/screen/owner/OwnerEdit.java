@@ -12,7 +12,7 @@ import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
+
 
 @UiController("petclinic_Owner.edit")
 @UiDescriptor("owner-edit.xml")
@@ -20,9 +20,9 @@ import javax.inject.Inject;
 @Route(value = "owners/edit", parentPrefix = "owners")
 public class OwnerEdit extends StandardEditor<Owner> {
 
-    @Inject
+    @Autowired
     protected Label<String> titleLabel;
-    @Inject
+    @Autowired
     protected MessageBundle messageBundle;
     @Autowired
     private EntityStates entityStates;

@@ -11,8 +11,7 @@ import io.jmix.ui.screen.MasterDetailScreen;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
-
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static io.jmix.petclinic.screen.pet.pettype.ColorGeneration.randomColor;
 
@@ -22,7 +21,7 @@ import static io.jmix.petclinic.screen.pet.pettype.ColorGeneration.randomColor;
 @Route(value = "pettypes")
 public class PetTypeBrowse extends MasterDetailScreen<PetType> {
 
-    @Inject
+    @Autowired
     protected UiComponents uiComponents;
 
     @Subscribe
