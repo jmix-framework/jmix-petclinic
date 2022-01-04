@@ -12,7 +12,6 @@ import io.jmix.ui.screen.StandardEditor;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -42,7 +41,6 @@ public class VisitEdit extends StandardEditor<Visit> {
     }
 
 
-    @NotNull
     private String editorTitleLabel() {
         if (entityStates.isNew(getEditedEntity())) {
             return messageBundle.getMessage("newCaption");
