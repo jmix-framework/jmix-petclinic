@@ -34,9 +34,13 @@ dependencies {
     implementation 'io.jmix.security:jmix-security-data-starter'
     implementation 'io.jmix.localfs:jmix-localfs-starter'
 
+    implementation 'io.jmix.security:jmix-security-oauth2-starter'
+    implementation 'io.jmix.graphql:jmix-graphql-starter'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     runtimeOnly 'org.hsqldb:hsqldb'
+    runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:8.1.1'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
