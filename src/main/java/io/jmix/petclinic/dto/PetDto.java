@@ -1,11 +1,9 @@
 package io.jmix.petclinic.dto;
 
-import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.JmixId;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.core.metamodel.annotation.JmixProperty;
-import io.jmix.core.metamodel.annotation.PropertyDatatype;
 
 import java.util.UUID;
 
@@ -18,8 +16,8 @@ public class PetDto {
     private UUID id;
 
 
-    @PropertyDatatype("fileRef")
-    private FileRef photo;
+    @JmixProperty
+    private String photoFileRef;
 
     public UUID getId() {
         return id;
@@ -29,11 +27,11 @@ public class PetDto {
         this.id = id;
     }
 
-    public FileRef getPhoto() {
-        return photo;
+    public String getPhotoFileRef() {
+        return photoFileRef;
     }
 
-    public void setPhoto(FileRef photo) {
-        this.photo = photo;
+    public void setPhotoFileRef(String photoFileRef) {
+        this.photoFileRef = photoFileRef;
     }
 }
