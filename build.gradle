@@ -1,17 +1,17 @@
 plugins {
-    id 'io.jmix' version '1.2.0'
+    id 'io.jmix' version '1.3.0'
     id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.2.4'
+    bomVersion = '1.3.0'
     projectId = 'petclinic'
 }
 
 group = 'io.jmix'
-version = '0.0.1-SNAPSHOT'
+version = '2.0'
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
