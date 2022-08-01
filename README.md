@@ -3,14 +3,11 @@
 </p>
 
 
-Jmix Petclinic is a Jmix platform example application dealing with the domain of a petclinic. It is based on the commonly known [Spring Petclinic](https://github.com/spring-projects/spring-petclinic) example.
-
-The Jmix Petclinic application deals with the domain of a Pet clinic and the associated business workflows to manage a pet clinic.
+Jmix Petclinic is an example application built with Jmix framework. It is based on the commonly known [Spring Petclinic](https://github.com/spring-projects/spring-petclinic) example.
 
 ## Online Demo
 
-The demo of the Jmix Petclinic is available on: https://demo.jmix.io/petclinic
-
+The demo of the Jmix Petclinic is available at https://demo.jmix.io/petclinic
 
 ## Application Overview
 
