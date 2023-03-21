@@ -1,12 +1,12 @@
 plugins {
-    id 'io.jmix' version '1.4.0'
+    id 'io.jmix' version '1.5.0'
     id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.4.0'
+    bomVersion = '1.5.0'
     projectId = 'petclinic'
 }
 
@@ -27,7 +27,7 @@ dependencies {
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.ui:jmix-ui-starter'
     implementation 'io.jmix.ui:jmix-ui-data-starter'
-    implementation "io.jmix.ui:jmix-ui-export-starter"
+    implementation 'io.jmix.gridexport:jmix-gridexport-ui-starter'
     implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
     implementation 'io.jmix.security:jmix-security-starter'
     implementation 'io.jmix.security:jmix-security-ui-starter'
