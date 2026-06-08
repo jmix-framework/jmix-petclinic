@@ -13,9 +13,10 @@ public class PetclinicSecurityConfiguration {
     @Bean
     @Order(JmixSecurityFilterChainOrder.CUSTOM)
     SecurityFilterChain publicFilterChain(HttpSecurity http) throws Exception {
-        http.securityMatcher("/healthcheck")
-                .authorizeHttpRequests(authorize ->
-                        authorize.anyRequest().permitAll()
+        http.securityMatcher("/images/**", "/healthcheck")
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/healthcheck").permitAll()
+                        .requestMatchers("/images/**").authenticated()
                 );
 
         return http.build();

@@ -49,20 +49,20 @@
                             dataLoader="petsDl"
                             labelPosition="TOP"
                             label="msg://io.jmix.petclinic.entity.pet/Pet.identificationNumber"
-            />
+                            operationTextVisible="false"/>
             <propertyFilter id="typeFilter"
                             property="type"
                             operation="EQUAL"
                             dataLoader="petsDl"
                             labelPosition="TOP"
                             label="msg://io.jmix.petclinic.entity.pet/Pet.type"
-            />
+                            operationTextVisible="false"/>
             <propertyFilter id="ownerFilter"
                             property="owner"
                             operation="EQUAL"
                             dataLoader="petsDl"
                             labelPosition="TOP"
-                            label="msg://io.jmix.petclinic.entity.pet/Pet.owner">
+                            label="msg://io.jmix.petclinic.entity.pet/Pet.owner" operationTextVisible="false">
                 <entityComboBox metaClass="petclinic_Owner" itemsContainer="ownersDc" width="100%"/>
             </propertyFilter>
             <button id="clearFilterBtn" action="clearFilterAction" classNames="self-end"/>
