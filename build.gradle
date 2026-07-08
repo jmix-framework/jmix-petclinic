@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '2.8.2'
+    id 'io.jmix' version '3.0.0'
     id 'java'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.9'
 }
@@ -8,7 +8,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'com.vaadin'
 
 jmix {
-    bomVersion = '2.8.2'
+    bomVersion = '3.0.0'
     projectId = 'petclinic'
 }
 
@@ -25,6 +25,7 @@ repositories {
 
 vaadin {
     optimizeBundle = false
+    productionMode = false
 }
 
 dependencies {
@@ -54,6 +55,7 @@ dependencies {
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
 
     implementation 'org.apache.commons:commons-dbcp2'
+    implementation 'com.vaadin:vaadin-dev'
 }
 
 configurations.implementation {
