@@ -29,6 +29,10 @@ vaadin {
 }
 
 dependencies {
+    implementation 'io.jmix.aitools:jmix-aitools-flowui-starter'
+    implementation 'io.jmix.aitools:jmix-aitools-starter'
+    implementation 'io.jmix.aitools:jmix-aitools-flowui-data-starter'
+
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.security:jmix-security-starter'
@@ -46,6 +50,7 @@ dependencies {
     implementation 'io.jmix.flowui:jmix-flowui-kit'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 

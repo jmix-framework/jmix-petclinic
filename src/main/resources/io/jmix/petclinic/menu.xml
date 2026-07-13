@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
+    <item view="aitls_AiChatHubView" title="msg://io.jmix.aitoolsflowui.view.chathub/aiChatHubView.menu" icon="CHAT"/>
     <item view="petclinic_MyVisits" title="msg://io.jmix.petclinic.view.visit/myVisitsView.title" icon="CLIPBOARD_USER"/>
     <menu opened="true" id="petclinic" title="msg://io.jmix.petclinic/menu.petclinic.title" icon="CLIPBOARD_PULSE">
         <item view="petclinic_Pet.list" title="msg://io.jmix.petclinic.view.pet.pet/petListView.title"/>
