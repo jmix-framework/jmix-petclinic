@@ -93,8 +93,12 @@
                 <action id="excelExport" type="grdexp_excelExport"/>
             </actions>
             <columns>
-                <column property="name"/>
-                <column property="identificationNumber"/>
+                <column property="name">
+                    <detailLinkRenderer target="BLANK"/>
+                </column>
+                <column property="identificationNumber">
+                    <detailButtonRenderer openMode="DIALOG" themeNames="tertiary"/>
+                </column>
                 <column property="birthdate"/>
                 <column property="type"/>
                 <column property="owner"/>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:sprd="http://jmix.io/schema/vaadin-spreadsheet/ui"
+      title="msg://spreadsheetView.title">
+    <layout>
+        <hbox>
+            <button id="downloadBtn" text="Download XLSX" icon="DOWNLOAD" themeNames="primary"/>
+            <fileUploadField id="uploadField" uploadText="Upload XLSX" uploadIcon="UPLOAD"/>
+        </hbox>
+        <sprd:spreadsheet id="spreadsheet" minHeight="30em"/>
+    </layout>
+</view>
