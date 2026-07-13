@@ -59,14 +59,14 @@ public class MainView extends StandardMainView {
         }
     }
 
-    @Subscribe("refreshMyVisitsBadge")
+    /*@Subscribe("refreshMyVisitsBadge")
     public void onRefreshMyVisitsBadgeTimerAction(final Timer.TimerActionEvent event) {
         ListMenu.MenuItem menuItem = menu.getMenuItem("petclinic_MyVisits");
 
         if (menuItem != null && menuItem.getSuffixComponent() instanceof Span badge) {
             badge.setText(messageBundle.formatMessage("myVisitMenuItemBadge.text", calculateAmountOfVisits()));
         }
-    }
+    }*/
 
     @Install(to = "userMenu", subject = "buttonRenderer")
     private Component userMenuButtonRenderer(final UserDetails userDetails) {

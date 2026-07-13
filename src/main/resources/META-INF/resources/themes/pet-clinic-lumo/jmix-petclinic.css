@@ -1,6 +1,4 @@
 /* Define your styles here */
-
-
 html {
     --lumo-primary-color: rgb(134, 122, 235);
     --lumo-primary-color-50pct: rgba(134, 122, 235, 0.5);
@@ -32,7 +30,6 @@ a.event-yellow .fc-event-main {
     color: #E3A023 !important;
 }
 
-
 .event-purple {
     border: 1px solid #6E64B9 !important;
     background-color: #D6D0FF
@@ -40,7 +37,6 @@ a.event-yellow .fc-event-main {
 a.event-purple .fc-event-main {
     color: #6E64B9 !important;
 }
-
 
 .event-blue {
     border: 1px solid #249FAF !important;
@@ -50,7 +46,6 @@ a.event-purple .fc-event-main {
 a.event-blue .fc-event-main {
     color: #249FAF !important;
 }
-
 
 .jmix-login-main-layout {
     background-image: url("login-background.svg");

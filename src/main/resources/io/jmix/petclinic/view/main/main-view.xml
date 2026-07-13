@@ -6,19 +6,18 @@
                 text="msg:///actions.logout.text"/>
     </actions>
     <facets>
-        <timer id="refreshMyVisitsBadge" delay="3000" autostart="true" repeating="true"/>
+<!--        <timer id="refreshMyVisitsBadge" delay="3000" autostart="true" repeating="true"/>-->
     </facets>
-    <appLayout>
+    <appLayout classNames="jmix-main-view-app-layout">
         <navigationBar>
             <header id="header" classNames="jmix-main-view-header">
                 <drawerToggle id="drawerToggle"
                               classNames="jmix-main-view-drawer-toggle"
-                              themeNames="contrast"
                               ariaLabel="msg://drawerToggle.ariaLabel"/>
                 <h1 id="viewTitle" classNames="jmix-main-view-title"/>
 
                 <userMenu id="userMenu"
-                          themeNames="tertiary" classNames="ms-auto me-m">
+                          themeNames="tertiary" classNames="jmix-main-view-user-menu">
                     <items>
                         <separator/>
                         <actionItem id="substituteUserMenuItem"
@@ -34,9 +33,8 @@
         </navigationBar>
         <drawerLayout>
             <section id="section" classNames="jmix-main-view-section">
-                <hbox width="100%" spacing="true">
-                    <image id="applicationIcon" width="2em" resource="/petclinic/images/petclinic_logo.svg"
-                           classNames="ml-s"/>
+                <hbox width="100%" padding="true">
+                    <image id="applicationIcon" width="2em" resource="/petclinic/images/petclinic_logo.svg"/>
                     <h2 id="applicationTitle"
                         classNames="jmix-main-view-application-title">
                         <anchor id="baseLink"
@@ -48,14 +46,15 @@
                 <nav id="navigation"
                      classNames="jmix-main-view-navigation"
                      ariaLabel="msg://navigation.ariaLabel">
-                    <listMenu id="menu"/>
+                    <listMenu id="menu" themeNames="toggle-reverse"/>
                 </nav>
             </section>
         </drawerLayout>
-        <initialLayout>
-            <vbox alignItems="CENTER" height="100%" width="100%">
-                <image resource="images/petclinic_logo_with_slogan.svg" classNames="login-image" maxWidth="50%"/>
-            </vbox>
+        <initialLayout id="initialLayout" classNames="jmix-initial-layout">
+            <div classNames="jmix-initial-layout-content">
+                <image resource="images/petclinic_logo_with_slogan.svg"
+                       classNames="jmix-initial-layout-logo"/>
+            </div>
         </initialLayout>
     </appLayout>
 </mainView>
