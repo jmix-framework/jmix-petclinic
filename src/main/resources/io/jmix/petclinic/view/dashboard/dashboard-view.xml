@@ -17,34 +17,32 @@
                 </dashb:content>
             </dashb:dashboardWidget>
 
-            <dashb:dashboardSection id="statistic" title="Statistic">
-                <dashb:dashboardWidget id="percentage" title="Percentage" rowspan="2">
-                    <dashb:content>
-                        <div classNames="dashboard-widget-content"/>
-                    </dashb:content>
-                </dashb:dashboardWidget>
+            <dashb:dashboardWidget id="percentage" title="Percentage" rowspan="2">
+                <dashb:content>
+                    <div classNames="dashboard-widget-content"/>
+                </dashb:content>
+            </dashb:dashboardWidget>
 
-                <dashb:dashboardWidget id="cars" title="Cars">
-                    <dashb:content>
-                        <div classNames="dashboard-widget-content"/>
-                    </dashb:content>
-                </dashb:dashboardWidget>
-                <dashb:dashboardWidget id="motorcycles" title="Motorcycles">
-                    <dashb:content>
-                        <div classNames="dashboard-widget-content"/>
-                    </dashb:content>
-                </dashb:dashboardWidget>
-                <dashb:dashboardWidget id="bicycles" title="Bicycles">
-                    <dashb:content>
-                        <div classNames="dashboard-widget-content"/>
-                    </dashb:content>
-                </dashb:dashboardWidget>
-                <dashb:dashboardWidget id="total" title="Total">
-                    <dashb:content>
-                        <div classNames="dashboard-widget-content"/>
-                    </dashb:content>
-                </dashb:dashboardWidget>
-            </dashb:dashboardSection>
+            <dashb:dashboardWidget id="cars" title="Cars">
+                <dashb:content>
+                    <div classNames="dashboard-widget-content"/>
+                </dashb:content>
+            </dashb:dashboardWidget>
+            <dashb:dashboardWidget id="motorcycles" title="Motorcycles">
+                <dashb:content>
+                    <div classNames="dashboard-widget-content"/>
+                </dashb:content>
+            </dashb:dashboardWidget>
+            <dashb:dashboardWidget id="bicycles" title="Bicycles">
+                <dashb:content>
+                    <div classNames="dashboard-widget-content"/>
+                </dashb:content>
+            </dashb:dashboardWidget>
+            <dashb:dashboardWidget id="total" title="Total">
+                <dashb:content>
+                    <div classNames="dashboard-widget-content"/>
+                </dashb:content>
+            </dashb:dashboardWidget>
         </dashb:dashboard>
     </layout>
 </view>
