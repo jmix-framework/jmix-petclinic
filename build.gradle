@@ -67,7 +67,7 @@ dependencies {
     implementation 'io.jmix.flowui:jmix-flowui-kit'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 
