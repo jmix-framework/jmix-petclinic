@@ -97,7 +97,7 @@
                     <detailLinkRenderer target="BLANK"/>
                 </column>
                 <column property="identificationNumber">
-                    <detailButtonRenderer openMode="DIALOG" themeNames="tertiary"/>
+                    <detailButtonRenderer openMode="DIALOG" classNames="link-button"/>
                 </column>
                 <column property="birthdate"/>
                 <column property="type"/>
