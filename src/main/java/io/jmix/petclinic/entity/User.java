@@ -10,6 +10,7 @@ import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
+import io.jmix.security.user.PasswordChangeRequired;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.springframework.data.annotation.CreatedBy;
@@ -87,8 +88,20 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
 
+    @PasswordChangeRequired
+    @Column(name = "PASSWORD_CHANGE_REQUIRED")
+    private Boolean passwordChangeRequired = false;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public Boolean getPasswordChangeRequired() {
+        return passwordChangeRequired;
+    }
+
+    public void setPasswordChangeRequired(Boolean passwordChangeRequired) {
+        this.passwordChangeRequired = passwordChangeRequired;
+    }
 
     public OffsetDateTime getDeletedDate() {
         return deletedDate;

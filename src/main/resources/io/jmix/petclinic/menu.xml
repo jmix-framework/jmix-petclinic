@@ -47,5 +47,7 @@
           title="msg://io.jmix.petclinic/menu_config.demo.title" opened="true">
         <item view="petclinic_DashboardView" title="msg://io.jmix.petclinic.view.dashboard/dashboardView.title"/>
         <item view="petclinic_SpreadsheetView" title="msg://io.jmix.petclinic.view.spreadsheet/spreadsheetView.title"/>
+        <item view="petclinic_MarkdownEditorView"
+              title="msg://io.jmix.petclinic.view.markdowneditor/markdownEditorView.title"/>
     </menu>
 </menu-config>

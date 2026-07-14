@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://markdownEditorView.title">
+    <layout>
+        <markdownEditor id="markdownEditor"
+                        label="Markdown Editor"
+                        themeNames="toolbar-align-end"/>
+    </layout>
+</view>
