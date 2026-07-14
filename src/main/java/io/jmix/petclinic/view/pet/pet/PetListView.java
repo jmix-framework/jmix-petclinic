@@ -40,7 +40,7 @@ public class PetListView extends StandardListView<Pet> {
     @Install(to = "petsDataGrid", subject = "sortBuilderDelegate")
     private DataGridSort petsDataGridSortBuilderDelegate(final DataGridSortContext<Pet> context) {
         return DataGridSortBuilder.create(context)
-                .replaceSort("owner", List.of("{E}.owner.firstName", "{E}.owner.lastName"))
+                .replaceSort("owner", List.of("{E}.owner.lastName"))
                 .build();
     }
 

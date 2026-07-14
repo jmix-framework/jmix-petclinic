@@ -79,7 +79,7 @@
                 <button id="excelExportBtn" action="petsDataGrid.excelExport"/>
             </startSlot>
             <endSlot>
-                <simplePagination id="pagination" dataLoader="petsDl"/>
+                <simplePagination id="pagination" dataLoader="petsDl" itemsPerPageDefaultValue="20"/>
             </endSlot>
         </hbox>
         <dataGrid id="petsDataGrid"
